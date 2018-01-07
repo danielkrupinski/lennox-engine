@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace lennox_engine
+namespace LennoxEngine
 {
 	// Stały bufor używany do wysłania macierzy MVP do programu do cieniowania wierzchołków.
 	struct ModelViewProjectionConstantBuffer

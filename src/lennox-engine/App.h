@@ -4,7 +4,7 @@
 #include "Common\DeviceResources.h"
 #include "lennox_engineMain.h"
 
-namespace lennox_engine
+namespace LennoxEngine
 {
 	// Główny punkt wejścia do naszej aplikacji. Łączy aplikację z powłoką systemu Windows i obsługuje zdarzenia cyklu życia aplikacji.
 	ref class App sealed : public Windows::ApplicationModel::Core::IFrameworkView

@@ -5,7 +5,7 @@
 #include "Content\Sample3DSceneRenderer.h"
 
 // Renderuje zawartość Direct3D na ekranie.
-namespace lennox_engine
+namespace LennoxEngine
 {
 	class lennox_engineMain
 	{

@@ -3,7 +3,7 @@
 
 #include <ppltasks.h>
 
-using namespace lennox_engine;
+using namespace LennoxEngine;
 
 using namespace concurrency;
 using namespace Windows::ApplicationModel;

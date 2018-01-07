@@ -5,7 +5,7 @@
 #include <ppltasks.h>
 #include <synchapi.h>
 
-using namespace lennox_engine;
+using namespace LennoxEngine;
 
 using namespace Concurrency;
 using namespace DirectX;

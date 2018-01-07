@@ -2,7 +2,7 @@
 #include "lennox_engineMain.h"
 #include "Common\DirectXHelper.h"
 
-using namespace lennox_engine;
+using namespace LennoxEngine;
 using namespace Windows::Foundation;
 using namespace Windows::System::Threading;
 using namespace Concurrency;
