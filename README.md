@@ -1,2 +1,1 @@
-# lennox-engine
-Lennox Game Engine
+# Lennox Game Engine
