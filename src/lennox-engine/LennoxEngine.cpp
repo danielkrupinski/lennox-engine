@@ -7,7 +7,6 @@ using namespace Windows::Foundation;
 using namespace Windows::System::Threading;
 using namespace Concurrency;
 
-//Szablon aplikacji DirectX 12 jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkID=613670&clcid=0x415
 
 // £aduje i inicjuje elementy zawartoœci aplikacji podczas ³adowania aplikacji.
 LennoxEngine::LennoxEngine()
