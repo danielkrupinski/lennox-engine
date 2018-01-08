@@ -4,7 +4,7 @@
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
 
-namespace LennoxEngine
+namespace Lennox
 {
 	// Ten przykładowy moduł renderowania tworzy wystąpienie podstawowego potoku renderowania.
 	class Sample3DSceneRenderer

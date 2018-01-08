@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "lennox_engineMain.h"
+#include "LennoxEngine.h"
 #include "Common\DirectXHelper.h"
 
-using namespace LennoxEngine;
+using namespace Lennox;
 using namespace Windows::Foundation;
 using namespace Windows::System::Threading;
 using namespace Concurrency;
@@ -10,7 +10,7 @@ using namespace Concurrency;
 //Szablon aplikacji DirectX 12 jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkID=613670&clcid=0x415
 
 // £aduje i inicjuje elementy zawartoœci aplikacji podczas ³adowania aplikacji.
-lennox_engineMain::lennox_engineMain()
+LennoxEngine::LennoxEngine()
 {
 	// TODO: zmieñ ustawienia czasomierza, jeœli chcesz u¿yæ czegoœ innego ni¿ domyœlny tryb zmiennego kroku czasu.
 	// np. dla logiki aktualizacji ze sta³ym krokiem czasu 60 kl./s u¿yj wywo³ania:
@@ -21,7 +21,7 @@ lennox_engineMain::lennox_engineMain()
 }
 
 // Tworzy i inicjuje programy renderuj¹ce.
-void lennox_engineMain::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
+void LennoxEngine::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
 {
 	// TODO: zast¹p to inicjowaniem zawartoœci aplikacji.
 	m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
@@ -30,7 +30,7 @@ void lennox_engineMain::CreateRenderers(const std::shared_ptr<DX::DeviceResource
 }
 
 // Aktualizuje stan aplikacji raz na ramkê.
-void lennox_engineMain::Update()
+void LennoxEngine::Update()
 {
 	// Aktualizuj obiekty sceny.
 	m_timer.Tick([&]()
@@ -42,7 +42,7 @@ void lennox_engineMain::Update()
 
 //Renderuje bie¿¹c¹ ramkê zgodnie z bie¿¹cym stanem aplikacji.
 // Zwraca wartoœæ true, jeœli ramka zosta³a wyrenderowana i jest gotowa do wyœwietlenia.
-bool lennox_engineMain::Render()
+bool LennoxEngine::Render()
 {
 	// Nie próbuj renderowaæ czegokolwiek przed pierwsz¹ aktualizacj¹.
 	if (m_timer.GetFrameCount() == 0)
@@ -56,14 +56,14 @@ bool lennox_engineMain::Render()
 }
 
 // Aktualizuje stan aplikacji w przypadku zmiany rozmiaru okna (np. zmiany orientacji urz¹dzenia)
-void lennox_engineMain::OnWindowSizeChanged()
+void LennoxEngine::OnWindowSizeChanged()
 {
 	// TODO: zast¹p to zale¿nym od rozmiaru inicjowaniem zawartoœci aplikacji.
 	m_sceneRenderer->CreateWindowSizeDependentResources();
 }
 
 // Powiadamia aplikacjê o jej wstrzymaniu.
-void lennox_engineMain::OnSuspending()
+void LennoxEngine::OnSuspending()
 {
 	// TODO: zast¹p to logik¹ wstrzymywania aplikacji.
 
@@ -77,13 +77,13 @@ void lennox_engineMain::OnSuspending()
 }
 
 // Powiadamia aplikacjê o tym, ¿e nie jest ju¿ wstrzymana.
-void lennox_engineMain::OnResuming()
+void LennoxEngine::OnResuming()
 {
 	// TODO: zast¹p to logik¹ wznawiania aplikacji.
 }
 
 // Powiadamia modu³y renderowania, ¿e nale¿y zwolniæ zasoby urz¹dzenia.
-void lennox_engineMain::OnDeviceRemoved()
+void LennoxEngine::OnDeviceRemoved()
 {
 	// TODO: zapisz wymagany stan aplikacji lub programu renderuj¹cego i zwolnij program renderuj¹cy
 	// i jego zasoby, które nie s¹ ju¿ prawid³owe.

@@ -2,9 +2,9 @@
 
 #include "pch.h"
 #include "Common\DeviceResources.h"
-#include "lennox_engineMain.h"
+#include "LennoxEngine.h"
 
-namespace LennoxEngine
+namespace Lennox
 {
 	// Główny punkt wejścia do naszej aplikacji. Łączy aplikację z powłoką systemu Windows i obsługuje zdarzenia cyklu życia aplikacji.
 	ref class App sealed : public Windows::ApplicationModel::Core::IFrameworkView
@@ -40,7 +40,7 @@ namespace LennoxEngine
 		std::shared_ptr<DX::DeviceResources> GetDeviceResources();
 
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
-		std::unique_ptr<lennox_engineMain> m_main;
+		std::unique_ptr<LennoxEngine> m_main;
 		bool m_windowClosed;
 		bool m_windowVisible;
 	};

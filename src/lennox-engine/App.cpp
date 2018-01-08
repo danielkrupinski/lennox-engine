@@ -3,7 +3,7 @@
 
 #include <ppltasks.h>
 
-using namespace LennoxEngine;
+using namespace Lennox;
 
 using namespace concurrency;
 using namespace Windows::ApplicationModel;
@@ -83,7 +83,7 @@ void App::Load(Platform::String^ entryPoint)
 {
 	if (m_main == nullptr)
 	{
-		m_main = std::unique_ptr<lennox_engineMain>(new lennox_engineMain());
+		m_main = std::unique_ptr<LennoxEngine>(new LennoxEngine());
 	}
 }
 

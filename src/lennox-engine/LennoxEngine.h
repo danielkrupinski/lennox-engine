@@ -5,12 +5,12 @@
 #include "Content\Sample3DSceneRenderer.h"
 
 // Renderuje zawartość Direct3D na ekranie.
-namespace LennoxEngine
+namespace Lennox
 {
-	class lennox_engineMain
+	class LennoxEngine
 	{
 	public:
-		lennox_engineMain();
+		LennoxEngine();
 		void CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 		void Update();
 		bool Render();
