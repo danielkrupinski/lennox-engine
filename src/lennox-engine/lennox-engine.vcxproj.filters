@@ -56,11 +56,17 @@
     <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <Filter>Elementy zawartości</Filter>
     </Image>
+    <Filter Include="Gra">
+      <UniqueIdentifier>{c21f2c99-44c2-4c9b-bedc-d4fd36f86d7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="LennoxEngine.cpp" />
+    <ClCompile Include="Game\Main.cpp">
+      <Filter>Gra</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
