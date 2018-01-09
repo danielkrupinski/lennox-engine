@@ -34,9 +34,6 @@
     <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <Filter>Assets</Filter>
     </Image>
-    <Filter Include="Game">
-      <UniqueIdentifier>{c21f2c99-44c2-4c9b-bedc-d4fd36f86d7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common">
       <UniqueIdentifier>59a11cd9-8488-45f9-aef5-e1f3931757e2</UniqueIdentifier>
     </Filter>
@@ -55,9 +52,6 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="LennoxEngine.cpp" />
-    <ClCompile Include="Game\Main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Content\SceneRenderer.cpp">
       <Filter>Content</Filter>
     </ClCompile>
