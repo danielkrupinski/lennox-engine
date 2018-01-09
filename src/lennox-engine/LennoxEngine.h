@@ -20,8 +20,6 @@ namespace Lennox
 		void OnResuming();
 		void OnDeviceRemoved();
 
-		void LoadScene();
-
 	private:
 		// TODO: zastąp własnymi modułami renderowania zawartości.
 		std::unique_ptr<Sample3DSceneRenderer> m_sceneRenderer;
