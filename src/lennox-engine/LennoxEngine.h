@@ -2,7 +2,7 @@
 
 #include "Common\StepTimer.h"
 #include "Common\DeviceResources.h"
-#include "Content\Sample3DSceneRenderer.h"
+#include "Content\SceneRenderer.h"
 
 // Renderuje zawartość Direct3D na ekranie.
 namespace Lennox
@@ -22,7 +22,7 @@ namespace Lennox
 
 	private:
 		// TODO: zastąp własnymi modułami renderowania zawartości.
-		std::unique_ptr<Sample3DSceneRenderer> m_sceneRenderer;
+		std::unique_ptr<SceneRenderer> m_sceneRenderer;
 
 		// Renderowanie czasomierza pętli.
 		DX::StepTimer m_timer;

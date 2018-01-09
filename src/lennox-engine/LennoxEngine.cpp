@@ -23,7 +23,7 @@ LennoxEngine::LennoxEngine()
 void LennoxEngine::CreateRenderers(const std::shared_ptr<DX::DeviceResources>& deviceResources)
 {
 	// TODO: zast¹p to inicjowaniem zawartoœci aplikacji.
-	m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(deviceResources));
+	m_sceneRenderer = std::unique_ptr<SceneRenderer>(new SceneRenderer(deviceResources));
 
 	OnWindowSizeChanged();
 }

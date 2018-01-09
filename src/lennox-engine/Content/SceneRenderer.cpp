@@ -1,5 +1,5 @@
 ﻿#include "pch.h"
-#include "Sample3DSceneRenderer.h"
+#include "SceneRenderer.h"
 
 #include "..\Common\DirectXHelper.h"
 #include <ppltasks.h>
@@ -18,7 +18,7 @@ Platform::String^ AngleKey = "Angle";
 Platform::String^ TrackingKey = "Tracking";
 
 // Ładuje programy do cieniowania wierzchołków i pikseli z plików oraz tworzy wystąpienie geometrii sześcianu.
-Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
+SceneRenderer::SceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
 	m_loadingComplete(false),
 	m_radiansPerSecond(XM_PIDIV4),	// obrót o 45 stopni na sekundę
 	m_angle(0),
@@ -33,13 +33,13 @@ Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceRes
 	CreateWindowSizeDependentResources();
 }
 
-Sample3DSceneRenderer::~Sample3DSceneRenderer()
+SceneRenderer::~SceneRenderer()
 {
 	m_constantBuffer->Unmap(0, nullptr);
 	m_mappedConstantBuffer = nullptr;
 }
 
-void Sample3DSceneRenderer::CreateDeviceDependentResources()
+void SceneRenderer::CreateDeviceDependentResources()
 {
 	auto d3dDevice = m_deviceResources->GetD3DDevice();
 
@@ -69,11 +69,11 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 	}
 
 	// Ładuje asynchronicznie programy do cieniowania.
-	auto createVSTask = DX::ReadDataAsync(L"SampleVertexShader.cso").then([this](std::vector<byte>& fileData) {
+	auto createVSTask = DX::ReadDataAsync(L"VertexShader.cso").then([this](std::vector<byte>& fileData) {
 		m_vertexShader = fileData;
 	});
 
-	auto createPSTask = DX::ReadDataAsync(L"SamplePixelShader.cso").then([this](std::vector<byte>& fileData) {
+	auto createPSTask = DX::ReadDataAsync(L"PixelShader.cso").then([this](std::vector<byte>& fileData) {
 		m_pixelShader = fileData;
 	});
 
@@ -302,7 +302,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 }
 
 // Inicjuje parametry widoku, gdy zmienia się rozmiar okna.
-void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
+void SceneRenderer::CreateWindowSizeDependentResources()
 {
 	Size outputSize = m_deviceResources->GetOutputSize();
 	float aspectRatio = outputSize.Width / outputSize.Height;
@@ -349,7 +349,7 @@ void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 }
 
 // Wywoływana raz na ramkę obraca sześcian i oblicza model oraz macierze widoku.
-void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
+void SceneRenderer::Update(DX::StepTimer const& timer)
 {
 	if (m_loadingComplete)
 	{
@@ -368,7 +368,7 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 }
 
 // Zapisuje bieżący stan programu renderującego.
-void Sample3DSceneRenderer::SaveState()
+void SceneRenderer::SaveState()
 {
 	auto state = ApplicationData::Current->LocalSettings->Values;
 
@@ -386,7 +386,7 @@ void Sample3DSceneRenderer::SaveState()
 }
 
 // Przywraca poprzedni stan programu renderującego.
-void Sample3DSceneRenderer::LoadState()
+void SceneRenderer::LoadState()
 {
 	auto state = ApplicationData::Current->LocalSettings->Values;
 	if (state->HasKey(AngleKey))
@@ -402,19 +402,19 @@ void Sample3DSceneRenderer::LoadState()
 }
 
 // Obróć model sześcianu 3W o określoną liczbę radianów.
-void Sample3DSceneRenderer::Rotate(float radians)
+void SceneRenderer::Rotate(float radians)
 {
 	// Przygotuj przesłanie zaktualizowanej macierzy modelu do programu do cieniowania
 	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
 }
 
-void Sample3DSceneRenderer::StartTracking()
+void SceneRenderer::StartTracking()
 {
 	m_tracking = true;
 }
 
 // Podczas śledzenia sześcianu 3W można go obracać wokół jego osi Y, śledząc położenie wskaźnika względem szerokości ekranu wyjściowego.
-void Sample3DSceneRenderer::TrackingUpdate(float positionX)
+void SceneRenderer::TrackingUpdate(float positionX)
 {
 	if (m_tracking)
 	{
@@ -423,13 +423,13 @@ void Sample3DSceneRenderer::TrackingUpdate(float positionX)
 	}
 }
 
-void Sample3DSceneRenderer::StopTracking()
+void SceneRenderer::StopTracking()
 {
 	m_tracking = false;
 }
 
 // Renderuje jedną ramkę za pomocą programu do cieniowania wierzchołków i pikseli.
-bool Sample3DSceneRenderer::Render()
+bool SceneRenderer::Render()
 {
 	// Ładowanie jest asynchroniczne. Rysuj geometrię dopiero po załadowaniu.
 	if (!m_loadingComplete)

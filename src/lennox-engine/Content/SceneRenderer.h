@@ -7,11 +7,11 @@
 namespace Lennox
 {
 	// Ten przykładowy moduł renderowania tworzy wystąpienie podstawowego potoku renderowania.
-	class Sample3DSceneRenderer
+	class SceneRenderer
 	{
 	public:
-		Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources);
-		~Sample3DSceneRenderer();
+		SceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources);
+		~SceneRenderer();
 		void CreateDeviceDependentResources();
 		void CreateWindowSizeDependentResources();
 		void Update(DX::StepTimer const& timer);

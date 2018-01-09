@@ -197,7 +197,7 @@
     <ClInclude Include="LennoxEngine.h" />
     <ClInclude Include="Common\DirectXHelper.h" />
     <ClInclude Include="Common\StepTimer.h" />
-    <ClInclude Include="Content\Sample3DSceneRenderer.h" />
+    <ClInclude Include="Content\SceneRenderer.h" />
     <ClInclude Include="Content\ShaderStructures.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -206,7 +206,7 @@
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="Game\Main.cpp" />
     <ClCompile Include="LennoxEngine.cpp" />
-    <ClCompile Include="Content\Sample3DSceneRenderer.cpp" />
+    <ClCompile Include="Content\SceneRenderer.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -223,10 +223,10 @@
     <None Include="lennox-engine_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Content\SamplePixelShader.hlsl">
+    <FxCompile Include="Content\PixelShader.hlsl">
       <ShaderType>Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="Content\SampleVertexShader.hlsl">
+    <FxCompile Include="Content\VertexShader.hlsl">
       <ShaderType>Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
