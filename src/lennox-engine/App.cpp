@@ -17,9 +17,7 @@ using namespace Windows::Graphics::Display;
 
 using Microsoft::WRL::ComPtr;
 
-//Szablon aplikacji DirectX 12 jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkID=613670&clcid=0x415
-
-// G³ówna funkcja s³u¿y tylko do inicjowania klasy IFrameworkView.
+// Gï¿½ï¿½wna funkcja sï¿½uï¿½y tylko do inicjowania klasy IFrameworkView.
 [Platform::MTAThread]
 int main(Platform::Array<Platform::String^>^)
 {
@@ -39,11 +37,11 @@ App::App() :
 {
 }
 
-// Pierwsza metoda wywo³ywana podczas tworzenia elementu IFrameworkView.
+// Pierwsza metoda wywoï¿½ywana podczas tworzenia elementu IFrameworkView.
 void App::Initialize(CoreApplicationView^ applicationView)
 {
-	// Zarejestruj procedury obs³ugi zdarzeñ dotycz¹ce cyklu ¿ycia aplikacji. Ten przyk³ad obejmuje element Activated, aby
-	// mo¿e uaktywniæ element CoreWindow i rozpocz¹æ renderowanie w oknie.
+	// Zarejestruj procedury obsï¿½ugi zdarzeï¿½ dotyczï¿½ce cyklu ï¿½ycia aplikacji. Ten przykï¿½ad obejmuje element Activated, aby
+	// moï¿½e uaktywniï¿½ element CoreWindow i rozpoczï¿½ï¿½ renderowanie w oknie.
 	applicationView->Activated +=
 		ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
 
@@ -54,7 +52,7 @@ void App::Initialize(CoreApplicationView^ applicationView)
 		ref new EventHandler<Platform::Object^>(this, &App::OnResuming);
 }
 
-// Element wywo³ywany w przypadku utworzenia lub odtworzenia obiektu CoreWindow.
+// Element wywoï¿½ywany w przypadku utworzenia lub odtworzenia obiektu CoreWindow.
 void App::SetWindow(CoreWindow^ window)
 {
 	window->SizeChanged += 
@@ -78,7 +76,7 @@ void App::SetWindow(CoreWindow^ window)
 		ref new TypedEventHandler<DisplayInformation^, Object^>(this, &App::OnDisplayContentsInvalidated);
 }
 
-// Inicjuje zasoby sceny lub ³aduje wczeœniej zapisany stan aplikacji.
+// Inicjuje zasoby sceny lub ï¿½aduje wczeï¿½niej zapisany stan aplikacji.
 void App::Load(Platform::String^ entryPoint)
 {
 	if (m_main == nullptr)
@@ -87,7 +85,7 @@ void App::Load(Platform::String^ entryPoint)
 	}
 }
 
-// Ta metoda jest wywo³ywana po uaktywnieniu okna.
+// Ta metoda jest wywoï¿½ywana po uaktywnieniu okna.
 void App::Run()
 {
 	while (!m_windowClosed)
@@ -120,13 +118,13 @@ void App::Run()
 }
 
 // Element wymagany przez element IFrameworkView.
-// Zakoñcz zdarzenia, które nie powoduj¹ wywo³ania elementu Uninitialize. Zostanie on wywo³any, jeœli element IFrameworkView
-// klasa jest niszczona, gdy aplikacja dzia³a na pierwszym planie.
+// Zakoï¿½cz zdarzenia, ktï¿½re nie powodujï¿½ wywoï¿½ania elementu Uninitialize. Zostanie on wywoï¿½any, jeï¿½li element IFrameworkView
+// klasa jest niszczona, gdy aplikacja dziaï¿½a na pierwszym planie.
 void App::Uninitialize()
 {
 }
 
-// Procedury obs³ugi zdarzeñ cyklu ¿ycia aplikacji.
+// Procedury obsï¿½ugi zdarzeï¿½ cyklu ï¿½ycia aplikacji.
 
 void App::OnActivated(CoreApplicationView^ applicationView, IActivatedEventArgs^ args)
 {
@@ -136,10 +134,10 @@ void App::OnActivated(CoreApplicationView^ applicationView, IActivatedEventArgs^
 
 void App::OnSuspending(Platform::Object^ sender, SuspendingEventArgs^ args)
 {
-	// Zapisz stan aplikacji asynchronicznie po za¿¹daniu odroczenia. Wstrzymanie odroczenia
-	// wskazuje, ¿e aplikacja jest zajêta przez operacje wstrzymywania.
-	// Odroczenie nie mo¿e trwaæ nieskoñczenie d³ugo. Po oko³o piêciu sekundach
-	// zostanie wymuszone zakoñczenie dzia³ania aplikacji.
+	// Zapisz stan aplikacji asynchronicznie po zaï¿½ï¿½daniu odroczenia. Wstrzymanie odroczenia
+	// wskazuje, ï¿½e aplikacja jest zajï¿½ta przez operacje wstrzymywania.
+	// Odroczenie nie moï¿½e trwaï¿½ nieskoï¿½czenie dï¿½ugo. Po okoï¿½o piï¿½ciu sekundach
+	// zostanie wymuszone zakoï¿½czenie dziaï¿½ania aplikacji.
 	SuspendingDeferral^ deferral = args->SuspendingOperation->GetDeferral();
 
 	create_task([this, deferral]()
@@ -151,14 +149,14 @@ void App::OnSuspending(Platform::Object^ sender, SuspendingEventArgs^ args)
 
 void App::OnResuming(Platform::Object^ sender, Platform::Object^ args)
 {
-	// Przywróæ zwolnione lub wstrzymane dane albo stan. Domyœlnie dane
-	// i stan s¹ zachowywane w przypadku wznawiania po wstrzymaniu. To zdarzenie
-	// nie wystêpuje, jeœli dzia³anie aplikacji zosta³o wczeœniej zakoñczone.
+	// Przywrï¿½ï¿½ zwolnione lub wstrzymane dane albo stan. Domyï¿½lnie dane
+	// i stan sï¿½ zachowywane w przypadku wznawiania po wstrzymaniu. To zdarzenie
+	// nie wystï¿½puje, jeï¿½li dziaï¿½anie aplikacji zostaï¿½o wczeï¿½niej zakoï¿½czone.
 
 	m_main->OnResuming();
 }
 
-// Procedury obs³ugi zdarzeñ okna.
+// Procedury obsï¿½ugi zdarzeï¿½ okna.
 
 void App::OnWindowSizeChanged(CoreWindow^ sender, WindowSizeChangedEventArgs^ args)
 {
@@ -176,14 +174,14 @@ void App::OnWindowClosed(CoreWindow^ sender, CoreWindowEventArgs^ args)
 	m_windowClosed = true;
 }
 
-// Procedury obs³ugi zdarzeñ wyœwietlania informacji.
+// Procedury obsï¿½ugi zdarzeï¿½ wyï¿½wietlania informacji.
 
 void App::OnDpiChanged(DisplayInformation^ sender, Object^ args)
 {
-	// Uwaga: Wartoœæ LogicalDpi pobrana w tym miejscu mo¿e nie byæ zgodna z wartoœci¹ DPI obowi¹zuj¹c¹ dla aplikacji,
-	// jeœli wykonywane jest skalowanie dla urz¹dzeñ obs³uguj¹cych wysok¹ rozdzielczoœæ. Po ustawieniu wartoœci DPI w elemencie DeviceResources
-	// nale¿y zawsze pobieraæ tê wartoœæ za pomoc¹ metody GetDpi.
-	// Wiêcej szczegó³ów zawiera plik DeviceResources.cpp.
+	// Uwaga: Wartoï¿½ï¿½ LogicalDpi pobrana w tym miejscu moï¿½e nie byï¿½ zgodna z wartoï¿½ciï¿½ DPI obowiï¿½zujï¿½cï¿½ dla aplikacji,
+	// jeï¿½li wykonywane jest skalowanie dla urzï¿½dzeï¿½ obsï¿½ugujï¿½cych wysokï¿½ rozdzielczoï¿½ï¿½. Po ustawieniu wartoï¿½ci DPI w elemencie DeviceResources
+	// naleï¿½y zawsze pobieraï¿½ tï¿½ wartoï¿½ï¿½ za pomocï¿½ metody GetDpi.
+	// Wiï¿½cej szczegï¿½ï¿½w zawiera plik DeviceResources.cpp.
 	GetDeviceResources()->SetDpi(sender->LogicalDpi);
 	m_main->OnWindowSizeChanged();
 }
@@ -203,8 +201,8 @@ std::shared_ptr<DX::DeviceResources> App::GetDeviceResources()
 {
 	if (m_deviceResources != nullptr && m_deviceResources->IsDeviceRemoved())
 	{
-		// Wszystkie odwo³ania do istniej¹cego urz¹dzenia D3D musz¹ zostaæ zwolnione, aby mo¿na by³o
-		// utworzyæ nowe urz¹dzenie.
+		// Wszystkie odwoï¿½ania do istniejï¿½cego urzï¿½dzenia D3D muszï¿½ zostaï¿½ zwolnione, aby moï¿½na byï¿½o
+		// utworzyï¿½ nowe urzï¿½dzenie.
 
 		m_deviceResources = nullptr;
 		m_main->OnDeviceRemoved();
